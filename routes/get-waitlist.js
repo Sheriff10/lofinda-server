@@ -1,5 +1,5 @@
 const express = require("express");
-const Waitlist = require("../model/Waitlist");
+const Waitlist = require("../models/Waitlist");
 
 const router = express.Router();
 
