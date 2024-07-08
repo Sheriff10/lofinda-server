@@ -5,17 +5,17 @@ require("dotenv").config();
 // .env file. you can rename the methods (functions) to whatever you like
 
 class Token {
-	// generate token for User authorization
-	userToken = (data) => {
-		const token = jwt.sign(data, process.env.JWT_USER_KEY);
-		return token;
-	};
+    // generate token for User authorization
+    userToken = (data) => {
+        const token = jwt.sign(data, process.env.JWT_USER_KEY, { expiresIn: '2d' });
+        return token;
+    };
 
-	// generate Admin token for authorization
-	adminToken = (data) => {
-		const token = jwt.sign(data, process.env.JWT_ADMIN_KEY);
-		return token;
-	};
+    // generate Admin token for authorization
+    adminToken = (data) => {
+        const token = jwt.sign(data, process.env.JWT_ADMIN_KEY, { expiresIn: '2d' });
+        return token;
+    };
 }
 
 module.exports = Token;

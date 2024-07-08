@@ -5,10 +5,11 @@ const signUpSchema = require("../../joi_schma/signupSchma");
 const User = require("../../models/User");
 const Token = require("../../utils/Generate-Token");
 const response = require("../../utils/response");
+const Wallet = require("../../models/Wallet");
 
 const router = express.Router();
 
-router.post("/signup", async (req, res) => {
+router.post("/", async (req, res) => {
 	try {
 		// Validate the request body
 		const { error } = signUpSchema.validate(req.body);
@@ -24,8 +25,8 @@ router.post("/signup", async (req, res) => {
 
 		// Create a new user
 		user = new User({
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
+			firstname: req.body.firstname,
+			lastname: req.body.lastname,
 			email: req.body.email,
 			username: req.body.username,
 			password: hashedPassword,
@@ -33,6 +34,10 @@ router.post("/signup", async (req, res) => {
 
 		await user.save();
 
+		// Initiate wallet for user
+		const wallet = new Wallet({ user: user._id });
+		await wallet.save();
+        
 		// Generate JWT token
 		const token = new Token();
 		const userToken = token.userToken({ _id: user._id });

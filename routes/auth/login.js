@@ -9,7 +9,7 @@ const Token = require("../../utils/Generate-Token");
 
 const router = express.Router();
 
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
 	try {
 		// Validate the request body
 		const { error } = loginSchema.validate(req.body);
@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
 
 		res.header("auth-user-token", userToken);
 		res.header("Access-Control-Expose-Headers", "auth-user-token");
-		return response(res, 200, "User created successfully");
+		return response(res, 200, "User Authenticated");
 	} catch (ex) {
 		res.status(500).send("Something went wrong.");
 	}
