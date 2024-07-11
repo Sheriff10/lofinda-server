@@ -9,6 +9,12 @@ const signup = require("../auth/signup");
 // Admin Modules
 const addProduct = require("../admin/add-product");
 
+// User Modules
+const userData = require("../user/get-user-data");
+const updateUserData = require("../user/update-data");
+const checkout = require("../user/checkout");
+const getOrders = require("../user/get-orders");
+
 const noAuthroute = (app) => {
 	app.use("/api/waitlist", waitlist);
 	app.use("/api/get-waitlist", getWaitlist);
@@ -21,6 +27,13 @@ const noAuthroute = (app) => {
 
 	// Admin routes
 	app.use("/api/admin/add-product", addProduct);
+
+	// User Routes
+	app.use("/api/user/data", userData);
+	app.use("/api/user/data/update", updateUserData);
+	app.use("/api/user/checkout", checkout);
+	app.use("/api/user/orders", getOrders);
+
 };
 
 module.exports = noAuthroute;

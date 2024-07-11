@@ -14,6 +14,12 @@ const orderSchema = new Schema(
 			},
 		],
 		totalAmount: { type: Number, required: true },
+		total_product: { type: Number, required: true },
+		status: {
+			type: String,
+			default: "pending",
+			enum: ["pending", "completed", "cancelled"],
+		},
 	},
 	{ timestamps: true },
 );
