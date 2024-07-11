@@ -1,7 +1,26 @@
 ###
 POST  http://localhost:5000/api/auth/login HTTP/1.1
 Content-Type: application/json
+
 {
     "email": "test@gmail.com",
     "password": "ramadan123"
 }
+###
+
+POST http://localhost:5000/api/admin/add-product HTTP/1.1
+Content-Type: application/json
+
+  {
+        "name": "Lavender Fields Perfume",
+        "description": "A calming perfume with the soothing scent of lavender fields.",
+        "price": 59.99,
+        "stock": 50,
+        "category": "Perfume",
+        "imageUrl": "/assets/products/lavender-fields-perfume.jpg"
+    }
+
+
+###
+
+GET http://localhost:5000/api/get-products HTTP/1.1
