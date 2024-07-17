@@ -14,6 +14,7 @@ const userData = require("../user/get-user-data");
 const updateUserData = require("../user/update-data");
 const checkout = require("../user/checkout");
 const getOrders = require("../user/get-orders");
+const wishlist = require("../user/wishlist");
 
 const noAuthroute = (app) => {
 	app.use("/api/waitlist", waitlist);
@@ -33,6 +34,7 @@ const noAuthroute = (app) => {
 	app.use("/api/user/data/update", updateUserData);
 	app.use("/api/user/checkout", checkout);
 	app.use("/api/user/orders", getOrders);
+	app.use("/api/user/wishlist", wishlist);
 
 };
 
