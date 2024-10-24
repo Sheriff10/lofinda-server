@@ -5,10 +5,10 @@ const response = require("../utils/response");
 const router = express.Router();
 
 router.get("/", [], async (req, res) => {
-	const { limit } = req.query;
-	const product = await Product.find({}).limit(limit);
+  const { limit } = req.query;
+  const product = await Product.find({ published: true }).limit(limit);
 
-	return response(res, 200, product, "all product");
+  return response(res, 200, product, "all product");
 });
 
 module.exports = router;
