@@ -7,7 +7,6 @@ const getAllProducts = async (req, res) => {
   try {
     // Extract query parameters
     const { category, published, limit = 10, offset = 0 } = req.query;
-    console.log({ category, published });
 
     let filter = {};
     if (category !== "") {

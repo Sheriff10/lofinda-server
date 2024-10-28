@@ -8,21 +8,19 @@ const app = express();
 app.use(express.json());
 
 app.use(
-	cors({
-		origin: "*", // Allow requests from any origin
-		methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow the specified methods
-		credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-	}),
+  cors({
+    origin: "https://www.lofinda.ng", // Allow requests from any origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow the specified methods
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
 );
 
 // Route Imports
 noAuthroute(app);
 app.get("/", (req, res) => {
-	res.send({ Message: "Lofinda Server is Live... " });
+  res.send({ Message: "Lofinda Server is Live... " });
 });
 
-
-
 app.listen(5000 || process.env.PORT, () => {
-	console.log("Lofinda Server is live at Port:5000");
+  console.log("Lofinda Server is live at Port:5000");
 });

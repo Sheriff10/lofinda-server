@@ -8,7 +8,6 @@ const response = require("../../utils/response");
 const deleteDocument = async (req, res) => {
   try {
     const { model, id } = req.params;
-    console.log({ model, id });
 
     // Determine which model to use based on the request
     let Model;

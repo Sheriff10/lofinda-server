@@ -16,7 +16,6 @@ const getAllOrders = async (req, res) => {
     if (payment !== "") {
       filter.payment = payment;
     }
-    console.log({ shipped, status, payment });
 
     const orders = await Order.find(filter)
       .skip(Number(offset))
